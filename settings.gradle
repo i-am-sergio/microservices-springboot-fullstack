@@ -1,0 +1,8 @@
+include 'students-microservice'
+include 'teachers-microservice'
+include 'courses-microservice'
+include 'auth-microservice'
+
+include 'eureka-microservice'
+include 'gateway-microservice'
+include 'config-microservice'
