@@ -1,0 +1,25 @@
+server:
+    port: 8002
+
+spring:
+    application:
+        name: courses-microservice
+    datasource:
+        url: jdbc:postgresql://roundhouse.proxy.rlwy.net:10288/railway
+        username: postgres
+        password: CYufocCQKOejYjmytjCLxZLJJoxtfLMI
+        driver-class-name: org.postgresql.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        database: postgresql
+    
+eureka:
+    instance:
+        hostname: localhost
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+        registerWithEureka: true
+        fetchRegistry: true
