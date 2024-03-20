@@ -1,3 +1,9 @@
 {
-    "java.compile.nullAnalysis.mode": "disabled"
+    "java.compile.nullAnalysis.mode": "disabled",
+    "[java]": {
+        "editor.tabSize": 4
+    },
+    "[javascriptreact]": {
+        "editor.tabSize": 2
+    },
 }
