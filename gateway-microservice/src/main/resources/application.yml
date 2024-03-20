@@ -6,9 +6,6 @@ spring:
         name: gateway-microservice
     cloud:
         gateway:
-            discovery:
-                locator:
-                    enabled: true
             routes:
                 - id: students-mcsv
                   uri: http://localhost:8001
