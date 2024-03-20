@@ -1,0 +1,27 @@
+server:
+    port: 8080
+
+spring:
+    application:
+        name: gateway-microservice
+    cloud:
+        gateway:
+            discovery:
+                locator:
+                    enabled: true
+            routes:
+                - id: students-mcsv
+                  uri: http://localhost:8001
+                  predicates:
+                    - Path=/students/**
+                - id: courses-mcsv
+                  uri: http://localhost:8002
+                  predicates:
+                    - Path=/courses/**
+                - id: teachers-mcsv
+                  uri: http://localhost:8003
+                  predicates:
+                    - Path=/teachers/**
+                
+    config:
+        import: optional:configserver:http://localhost:8888
