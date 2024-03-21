@@ -50,6 +50,17 @@ This project is a University Management System built using microservices archite
 2. Install JDK 17 (LTS)
 3. Run each microservice
 
+## Docker
+
+1. `students-microservice`
+    - Build container:
+    ```bash 
+    docker build -t students-mcsv .
+    ```
+    - Run microservice:
+    ```
+    docker run -p 8001:8001 students-mcsv
+    ```
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests.
 
