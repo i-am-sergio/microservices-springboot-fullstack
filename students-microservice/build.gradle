@@ -15,6 +15,8 @@ configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
 	}
+	microserviceOnly
+    developmentOnly
 }
 
 repositories {
@@ -25,16 +27,27 @@ ext {
 	set('springCloudVersion', "2023.0.0")
 }
 
+// Profile configuration
+def activeProfile = project.hasProperty('profile') ? project.property('profile') : 'development'
+
+def printProfile = {
+	println "ACTIVE PROFILE: $activeProfile"
+}
+
+printProfile()
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'org.springframework.cloud:spring-cloud-starter-config'
-	implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
 	compileOnly 'org.projectlombok:lombok'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    if (activeProfile == 'microservice') {
+        implementation 'org.springframework.cloud:spring-cloud-starter-config'
+        implementation 'org.springframework.cloud:spring-cloud-starter-netflix-eureka-client'
+    }
 }
 
 dependencyManagement {
@@ -45,4 +58,28 @@ dependencyManagement {
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+
+switch (activeProfile) {
+    case 'microservice':
+        configurations.developmentOnly.each { configuration ->
+            configurations.microserviceOnly.extendsFrom(configuration)
+        }
+        break
+    case 'development':
+        configurations.microserviceOnly.each { configuration ->
+            configurations.developmentOnly.extendsFrom(configuration)
+        }
+        break
+    default:
+        throw new GradleException("Perfil desconocido: $activeProfile")
+}
+
+bootRun {
+    if (activeProfile == 'microservice') {
+        systemProperty 'spring.profiles.active', 'microservice'
+    } else {
+        systemProperty 'spring.profiles.active', 'development'
+    }
 }
