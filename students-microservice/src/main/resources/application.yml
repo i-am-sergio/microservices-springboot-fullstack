@@ -1,0 +1,33 @@
+server:
+    port: 8001
+
+spring:
+    application:
+        name: students-microservice
+    datasource:
+        url: jdbc:mysql://monorail.proxy.rlwy.net:58867/railway
+        username: root
+        password: AkezorhiixgLCkYrsDaQSGXKpSdDQwOt
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        database: mysql
+    servlet:
+        multipart:
+            max-file-size: 20MB
+            max-request-size: 20MB
+            enabled: true
+        
+    config:
+        import: optional:configserver:http://localhost:8888
+
+# eureka:
+#     instance:
+#         hostname: localhost
+#     client:
+#         serviceUrl:
+#             defaultZone: http://localhost:8761/eureka/
+#         registerWithEureka: true
+#         fetchRegistry: true

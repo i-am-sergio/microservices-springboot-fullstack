@@ -1,0 +1,31 @@
+server:
+    port: 8003
+
+spring:
+    application:
+        name: teachers-microservice
+    datasource:
+        url: jdbc:mysql://monorail.proxy.rlwy.net:58867/railway
+        username: root
+        password: AkezorhiixgLCkYrsDaQSGXKpSdDQwOt
+        driver-class-name: com.mysql.cj.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: update
+        show-sql: true
+        database: mysql
+
+    servlet:
+        multipart:
+            max-file-size: 30MB
+            max-request-size: 30MB
+            enabled: true
+
+eureka:
+    instance:
+        hostname: localhost
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+        registerWithEureka: true
+        fetchRegistry: true

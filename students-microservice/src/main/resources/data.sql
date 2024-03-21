@@ -1,0 +1,11 @@
+INSERT INTO students (name, email, phone, address, photo, gender, admission_year, graduation_year) VALUES
+    ('John Doe', 'john.doe@example.com', '1234567890', '123 Main St, City', 'photo1.jpg', 'Male', '2022-01-01', '2026-01-01'),
+    ('Jane Smith', 'jane.smith@example.com', '9876543210', '456 Elm St, Town', 'photo2.jpg', 'Female', '2022-01-01', '2026-01-01'),
+    ('Michael Johnson', 'michael.johnson@example.com', '5551234567', '789 Oak St, Village', 'photo3.jpg', 'Male', '2022-01-01', '2026-01-01'),
+    ('Emily Davis', 'emily.davis@example.com', '4449876543', '321 Maple St, Country', 'photo4.jpg', 'Female', '2022-01-01', '2026-01-01'),
+    ('Daniel Wilson', 'daniel.wilson@example.com', '7775551234', '654 Pine St, Suburb', 'photo5.jpg', 'Male', '2022-01-01', '2026-01-01'),
+    ('Maria Garcia', 'maria.garcia@example.com', '9998887776', '987 Oak St, City', 'photo6.jpg', 'Female', '2022-01-01', '2026-01-01'),
+    ('Carlos Martinez', 'carlos.martinez@example.com', '1112223334', '654 Elm St, Town', 'photo7.jpg', 'Male', '2022-01-01', '2026-01-01'),
+    ('Ana Lopez', 'ana.lopez@example.com', '7779998882', '321 Maple St, Village', 'photo8.jpg', 'Female', '2022-01-01', '2026-01-01'),
+    ('Pedro Rodriguez', 'pedro.rodriguez@example.com', '5556667778', '789 Pine St, Country', 'photo9.jpg', 'Male', '2022-01-01', '2026-01-01'),
+    ('Laura Fernandez', 'laura.fernandez@example.com', '3334445556', '456 Oak St, Suburb', 'photo10.jpg', 'Female', '2022-01-01', '2026-01-01');
