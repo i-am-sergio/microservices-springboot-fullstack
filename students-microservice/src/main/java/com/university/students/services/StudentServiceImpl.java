@@ -1,7 +1,9 @@
 package com.university.students.services;
 
 import java.util.List;
+import java.util.Date;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import com.university.students.models.StudentModel;
@@ -12,7 +14,7 @@ import lombok.AllArgsConstructor;
 @Service
 @AllArgsConstructor
 public class StudentServiceImpl implements IStudentService {
-    
+
     private final StudentRepository studentRepository;
 
     @Override
@@ -32,9 +34,12 @@ public class StudentServiceImpl implements IStudentService {
 
     @Override
     public boolean updateStudent(Long id, StudentModel student) {
-        if (studentRepository.existsById(id)) {
-            studentRepository.save(student);
-            return true;
+        StudentModel studentToUpdate = studentRepository.findById(id).orElse(null);
+        if (studentToUpdate != null) {
+            // Copy the new student data to the studentToUpdate object
+            BeanUtils.copyProperties(student, studentToUpdate, "id");
+            studentRepository.save(studentToUpdate);
+            return true; // Se actualizó correctamente
         } else {
             return false;
         }
@@ -48,6 +53,11 @@ public class StudentServiceImpl implements IStudentService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public List<StudentModel> getStudentsByAdmissionYear(Date year) {
+        return studentRepository.findByAdmissionYear(year);
     }
 
 }

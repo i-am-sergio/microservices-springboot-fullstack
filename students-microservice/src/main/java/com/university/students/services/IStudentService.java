@@ -1,6 +1,7 @@
 package com.university.students.services;
 
 import java.util.List;
+import java.util.Date;
 
 import com.university.students.models.StudentModel;
 
@@ -15,5 +16,7 @@ public interface IStudentService {
     public boolean updateStudent(Long id, StudentModel student);
 
     public boolean deleteStudent(Long id);
+
+    public List<StudentModel> getStudentsByAdmissionYear(Date year);
 
 }
